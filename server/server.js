@@ -19,7 +19,7 @@ app.use(cors({
 
 
 app.get("/",(req,res) => {
-    res.send("kaBOOM")
+    res.send("Server is Running...")
 })
 
 app.use("/api",require("./routes/routes"))

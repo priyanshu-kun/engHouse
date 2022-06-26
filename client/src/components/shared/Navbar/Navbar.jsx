@@ -17,7 +17,7 @@ function Navbar() {
     return (
         <nav className={`container ${style.navbar}`}>
             <Link style={brandStyle} to="/">
-                <span>👋</span><span style={logoText}>coderHouse</span>
+                <span>👋</span><span style={logoText}>Eng.House</span>
             </Link>
         </nav>
     );

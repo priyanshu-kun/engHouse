@@ -10,7 +10,7 @@ function Card({title,emoji,children}) {
     return (
         <div className={style.card}>
             <div className={style.headingWrapper}>
-                {title}
+                {title}&nbsp;&nbsp;
                 <span style={headingText}>{emoji}</span>
             </div>
             {children}

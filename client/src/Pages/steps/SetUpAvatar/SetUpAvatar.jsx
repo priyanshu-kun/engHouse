@@ -6,11 +6,12 @@ import Button from "../../../components/shared/Button/Button"
 import sytles from "./SetUpAvatar.module.css"
 import {useSelector,useDispatch} from "react-redux"
 import {setAvatar} from "../../../store/activate.Slice"
+import {activate} from "../../../http/index"
 
 
 function SetUpAvatar({onNext}) {
 
-   const {name} = useSelector((state) => state.activate)
+   const {name,avatar} = useSelector((state) => state.activate)
    const [image,setImage] = useState("/images/avatar.png")
    const dispatch = useDispatch()
 
@@ -22,8 +23,14 @@ function SetUpAvatar({onNext}) {
         width: "150px"
     }
 
-    function submit() {
-        alert("kaboom")
+    async function submit() {
+       try {
+            const {data} = await activate({name,avatar})
+            console.log(data)
+       } 
+       catch(e) {
+           console.log(e)
+       }
     }
 
     function captureImage(e) {

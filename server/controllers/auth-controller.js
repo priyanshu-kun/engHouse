@@ -21,7 +21,7 @@ class AuthController {
         const data = `${phone}.${otp}.${expire}`
         const hash = await hashService.hashOtp(data)
 
-        console.log("At auth-controller 24: Hora everything works fine:D")
+        //console.log("At auth-controller 24: Hora everything works fine:D")
 
         // send otp
         try {

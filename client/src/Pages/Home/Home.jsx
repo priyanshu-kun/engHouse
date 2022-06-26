@@ -19,7 +19,7 @@ function Home() {
 
     return (
         <div className="cardWrapper" >
-            <Card title="Welcome to CoderHouse!" emoji="👋">
+            <Card title="Welcome to Eng.House!" emoji="👋">
                 <p className={style.text}>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo, nihil, debitis beatae quos possimus asperiores earum?Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
