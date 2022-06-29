@@ -36,7 +36,6 @@ function GuestRoute({ children, ...rest }) {
   const {isAuth} = useSelector((state) => state.auth)
   return (
     <Route {...rest} render={({ location }) => {
-      console.log("Inside guest route")
       return isAuth ?
         (
           <Redirect to={{
@@ -56,7 +55,6 @@ function SemiProtectedRoutes({ children, ...rest }) {
 
   return (
     <Route {...rest} render={({ location }) => {
-      console.log("Inside semi protected routes")
 
       return !isAuth ?
         (
@@ -84,7 +82,6 @@ function ProtectedRoutes({ children, ...rest }) {
 
   return (
     <Route {...rest} render={({ location }) => {
-      console.log("Inside protected rotues")
       return !isAuth ?
         (
           <Redirect to={{
