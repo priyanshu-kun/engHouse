@@ -8,7 +8,7 @@ import Rooms from './Pages/Rooms/Rooms';
 import {useSelector} from "react-redux"
 
 
-
+// TODO: complete that shit
 function App() {
   return (
     <Switch>

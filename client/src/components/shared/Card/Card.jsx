@@ -14,7 +14,6 @@ function Card({title,emoji,children}) {
                 <span style={headingText}>{emoji}</span>
             </div>
             {children}
-
         </div>
     );
 }
