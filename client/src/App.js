@@ -34,6 +34,7 @@ function App() {
 
 function GuestRoute({ children, ...rest }) {
   const {isAuth} = useSelector((state) => state.auth)
+  // const isAuth = true;
   return (
     <Route {...rest} render={({ location }) => {
       return isAuth ?
@@ -79,6 +80,8 @@ function SemiProtectedRoutes({ children, ...rest }) {
 }
 function ProtectedRoutes({ children, ...rest }) {
   const {user,isAuth} = useSelector((state) => state.auth)
+  // const isAuth = true;
+  // const user = {activated: true};
 
   return (
     <Route {...rest} render={({ location }) => {
