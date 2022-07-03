@@ -11,7 +11,7 @@ import {activate} from "../../../http/index"
 
 function SetUpAvatar({onNext}) {
 
-   const {name,avatar} = useSelector((state) => state.activate)
+   const {name,avatar,username} = useSelector((state) => state.activate)
    const [image,setImage] = useState("/images/avatar.png")
    const dispatch = useDispatch()
 
@@ -25,7 +25,7 @@ function SetUpAvatar({onNext}) {
 
     async function submit() {
        try {
-            const {data} = await activate({name,avatar})
+            const {data} = await activate({name,avatar,username})
             console.log(data)
        } 
        catch(e) {

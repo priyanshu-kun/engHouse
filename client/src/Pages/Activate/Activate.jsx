@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import SetUpName from "../steps/SetUpName/SetUpName"
 import SetUpAvatar from "../steps/SetUpAvatar/SetUpAvatar"
+import SetUpUsername from "../steps/SetUpUsername/SetUpUsername"
 import "../../App.css"
 
 
 
 const steps = {
     1: SetUpName,
-    2: SetUpAvatar
+    2: SetUpUsername,
+    3: SetUpAvatar
 }
 
 function Activate(props) {
