@@ -7,6 +7,7 @@ import sytles from "./SetUpAvatar.module.css"
 import {useSelector,useDispatch} from "react-redux"
 import {setAvatar} from "../../../store/activate.Slice"
 import {activate} from "../../../http/index"
+import { setAuth } from '../../../store/auth.Slice';
 
 
 function SetUpAvatar({onNext}) {
@@ -26,6 +27,9 @@ function SetUpAvatar({onNext}) {
     async function submit() {
        try {
             const {data} = await activate({name,avatar,username})
+            if(data.auth) {
+                dispatch(setAuth(data));
+            }
             console.log(data)
        } 
        catch(e) {
