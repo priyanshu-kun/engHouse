@@ -26,6 +26,9 @@ function SetUpAvatar({onNext}) {
 
     async function submit() {
        try {
+            if(!avatar) {
+                return console.log("Upload a avatar plezz!");
+            }
             const {data} = await activate({name,avatar,username})
             if(data.auth) {
                 dispatch(setAuth(data));
@@ -38,7 +41,6 @@ function SetUpAvatar({onNext}) {
     }
 
     function captureImage(e) {
-        console.log(e)
         const file = e.target.files[0];
         const reader  = new FileReader();
         reader.readAsDataURL(file);

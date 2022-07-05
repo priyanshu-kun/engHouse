@@ -8,7 +8,13 @@ import Rooms from './Pages/Rooms/Rooms';
 import {useSelector} from "react-redux"
 
 
-// TODO: complete that shit
+// TODO 1: Generate random username
+// TODO 2: Prevent user to choose username that is already exists
+// TODO 3: Code activation loader component
+// TODO 4: reloging user after each refresh
+// TODO 5: use refresh token
+// TODO 6: allow user to upload jpg,gif images not just png
+
 function App() {
   return (
     <Switch>
