@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Card from "../../../components/shared/Card/Card"
-
 import { FaLongArrowAltRight } from "react-icons/fa";
 import Button from "../../../components/shared/Button/Button"
 import sytles from "./SetUpAvatar.module.css"
@@ -14,8 +13,9 @@ function SetUpAvatar({onNext}) {
 
    const {name,avatar,username} = useSelector((state) => state.activate)
    const [image,setImage] = useState("/images/avatar.png")
+   const [isAvatarNotSet, setIsAvatarNotSet] = useState(true)
    const dispatch = useDispatch()
-
+   
     const iconStyle = {
         fontSize: "20px",
     }
@@ -46,6 +46,7 @@ function SetUpAvatar({onNext}) {
         reader.readAsDataURL(file);
         reader.onloadend = function() {
             setImage(reader.result)
+            setIsAvatarNotSet(false);
             dispatch(setAvatar(reader.result))
         }
     }
@@ -55,7 +56,7 @@ function SetUpAvatar({onNext}) {
              <Card title={`Okay, ${name}!`} emoji="&nbsp;🐵">
                  <p className={sytles.subHeading}>How's this photo?</p>
                <div className={sytles.avatarWrapper}>
-                   <img src={image} alt="avatar" />
+                   <img style={isAvatarNotSet ? {width: "60%", height: "60%", borderRadius: "0"}: {}} src={image} alt="avatar"  />
                </div>
                <div>
                    <input onChange={captureImage} id="avatarInput" type="file" className={sytles.avatarInput} />

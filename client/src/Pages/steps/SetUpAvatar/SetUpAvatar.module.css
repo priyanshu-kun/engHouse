@@ -52,3 +52,10 @@
     left: 0;
     background: #0077ff;
 }
+
+
+.resizeAvatar {
+    width: 50% !important;
+    border-radius: none !important;
+    height: 50% !important;
+}
