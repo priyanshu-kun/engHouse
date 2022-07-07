@@ -37,11 +37,16 @@ class TokenService {
     }
 
     async findRefreshToken(userId, refreshToken) {
-        return await refreshModal.findOne({_id: userId, token: refreshToken})
+        return await refreshModal.findOne({userId: userId, token: refreshToken})
     }
 
     async updateRefreshToken(userId, refreshToken) {
         return await refreshModal.updateOne({userId: userId }, {token: refreshToken})
+    }
+
+
+    async removeRefreshToken(token) {
+        await refreshModal.deleteOne({token})
     }
 
 }

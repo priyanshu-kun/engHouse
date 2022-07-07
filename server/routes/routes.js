@@ -6,6 +6,7 @@ const isAuth = require("../middlewares/isAuth")
 router.post("/send-otp",authController.sendOtp)
 router.post("/verify-otp",authController.verifyOtp)
 router.post("/activate",isAuth,activateController.activate)
-router.post('/api/refresh', authController.refresh)
+router.get('/refresh', authController.refresh)
+router.post('/logout',isAuth, authController.logout);
 
 module.exports = router

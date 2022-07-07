@@ -26,7 +26,7 @@ function SetUpOTP() {
 
     async function submit() {
         try {
-
+            if(!OTP || !phone || !hash) return;
             const { data } = await verifyOtp({ otp: OTP, phone, hash })
             console.log(data)
             dispatch(setAuth(data))

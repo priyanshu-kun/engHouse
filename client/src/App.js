@@ -6,6 +6,8 @@ import Authenticate from "./Pages/Authenticate/Authenticate"
 import Activate from './Pages/Activate/Activate';
 import Rooms from './Pages/Rooms/Rooms';
 import {useSelector} from "react-redux"
+import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
+import Loader from './components/shared/Loader/Loader';
 
 
 // TODO 1: Generate random username
@@ -16,7 +18,14 @@ import {useSelector} from "react-redux"
 // TODO 6: allow user to upload jpg,gif images not just png
 
 function App() {
+  // call refresh endpoint
+  const {loading} = useLoadingWithRefresh()
+
   return (
+    loading ? (
+        <Loader message="Your stuff is being Loading, Please wait ..." />
+    )
+    : (
     <Switch>
       <>
         <Navbar />
@@ -34,6 +43,7 @@ function App() {
         </ProtectedRoutes>
       </>
     </Switch>
+    )
   );
 }
 

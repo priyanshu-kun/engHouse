@@ -7,6 +7,7 @@ import {useSelector,useDispatch} from "react-redux"
 import {setAvatar} from "../../../store/activate.Slice"
 import {activate} from "../../../http/index"
 import { setAuth } from '../../../store/auth.Slice';
+import Loader from '../../../components/shared/Loader/Loader';
 
 
 function SetUpAvatar({onNext}) {
@@ -14,6 +15,7 @@ function SetUpAvatar({onNext}) {
    const {name,avatar,username} = useSelector((state) => state.activate)
    const [image,setImage] = useState("/images/avatar.png")
    const [isAvatarNotSet, setIsAvatarNotSet] = useState(true)
+   const [loading, setLoading] = useState(false)
    const dispatch = useDispatch()
    
     const iconStyle = {
@@ -26,6 +28,7 @@ function SetUpAvatar({onNext}) {
 
     async function submit() {
        try {
+            setLoading(true)
             if(!avatar) {
                 return console.log("Upload a avatar plezz!");
             }
@@ -33,10 +36,12 @@ function SetUpAvatar({onNext}) {
             if(data.auth) {
                 dispatch(setAuth(data));
             }
-            console.log(data)
        } 
        catch(e) {
            console.log(e)
+       }
+       finally {
+            setLoading(false)
        }
     }
 
@@ -50,6 +55,8 @@ function SetUpAvatar({onNext}) {
             dispatch(setAvatar(reader.result))
         }
     }
+
+    if(loading) return <Loader message="Activation in progress ..." />
 
     return (
         <>
