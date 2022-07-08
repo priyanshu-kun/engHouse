@@ -24,3 +24,8 @@
 .btn span {
     margin-right: 3px;
 }
+
+.btn.isInActive {
+    background-color: gray;
+    pointer-events: none;
+}

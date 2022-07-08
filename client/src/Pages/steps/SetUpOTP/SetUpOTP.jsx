@@ -14,6 +14,7 @@ function SetUpOTP() {
 
     const [OTP, setOTP] = useState("")
     const { phone, hash } = useSelector((state) => state.auth.otp)
+    const [isInActiveState, setIsInActiveState] = useState(true);
     const dispatch = useDispatch()
 
     const iconStyle = {
@@ -39,9 +40,17 @@ function SetUpOTP() {
     return (
         <div className="cardWrapper">
             <Card title="Enter the code we just texted you" emoji="🔐">
-                <TextInput value={OTP} onChange={(e) => setOTP(e.target.value)} />
+                <TextInput value={OTP} onChange={(e) => {
+                    if(e.target.value) {
+                        setIsInActiveState(false);
+                    }
+                    else {
+                        setIsInActiveState(true);
+                    }
+                    setOTP(e.target.value)
+                }} />
                 <div>
-                    <Button onClick={submit} width={customBtnWidth} text="Next" icon={<FaLongArrowAltRight style={iconStyle} />}></Button>
+                    <Button onClick={submit} width={customBtnWidth} isInActiveState={isInActiveState} text="Next" icon={<FaLongArrowAltRight style={iconStyle} />}></Button>
                 </div>
                 <p className={style.bottomParagraph}>By entering your number, you’re agreeing to our Terms of Service and Privacy Policy. Thanks!</p>
             </Card>

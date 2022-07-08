@@ -1,11 +1,11 @@
 import React from 'react';
-import style from "./Button.module.css"
+import styles from "./Button.module.css"
 
-function Button({text,icon,onClick,width}) {
+function Button({text,icon,onClick,width, isInActiveState}) {
     
     return (
         <>
-            <button style={width} onClick={onClick} className={style.btn}>
+            <button style={width} onClick={onClick} className={`${styles.btn} ${isInActiveState && styles.isInActive}`}>
                 <span>{text}</span>
                 {icon}
             </button>

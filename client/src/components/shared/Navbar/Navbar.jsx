@@ -1,5 +1,5 @@
 import React from 'react';
-import style from "./Navbar.module.css"
+import styles from "./Navbar.module.css"
 import { Link } from "react-router-dom";
 import { logout } from '../../../http';
 import {useDispatch, useSelector} from "react-redux"
@@ -9,7 +9,7 @@ import { setAvatar, setName, setUsername } from '../../../store/activate.Slice';
 function Navbar() {
 
     const dispatch = useDispatch();
-    const {isAuth} = useSelector(state => state.auth);
+    const {user, isAuth} = useSelector(state => state.auth);
 
 
     async function logOutUser() {
@@ -38,15 +38,21 @@ function Navbar() {
         marginLeft: "3px"
     }
     return (
-        <nav  className={`container ${style.navbar}`}>
+        <nav className={`container ${styles.navbar}`}>
             <Link style={brandStyle} to="/">
                 <span>👋</span><span style={logoText}>Eng.House</span>
             </Link>
+            <div className={styles.navRight}>
+                <h3>{user.name}</h3>
+                <Link to="/">
+                    <img src={user.avatar} width="40" height="40" alt="avatar" />
+                </Link>
             {
                 isAuth && (
                     <button onClick={logOutUser}>LogOut</button>
                 )
             }
+            </div>
         </nav>
     );
 }

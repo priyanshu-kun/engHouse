@@ -12,6 +12,7 @@ function SetUpUsername({ onNext }) {
     const {username,name} = useSelector((state) => state.activate)
     const dispatch = useDispatch()
     const [usernameLocal,setUsernameLocal] = useState(username)
+    const [isInActiveState, setIsInActiveState] = useState(true);
 
 
     const iconStyle = {
@@ -36,11 +37,17 @@ function SetUpUsername({ onNext }) {
         <>
             <Card title={`Okay, ${name}! `} emoji="🤯">
                 <TextInput value={usernameLocal} onChange={(e) => {
+                    if(e.target.value) {
+                        setIsInActiveState(false);
+                    }
+                    else {
+                        setIsInActiveState(true);
+                    }
                     setUsernameLocal(e.target.value)
                 }} />
                 <p className={styles.paragraph}>Give yourself a unique username :)</p>
                 <div>
-                    <Button onClick={nextStep} width={customBtnWidth} text="Next" icon={<FaLongArrowAltRight style={iconStyle} />}></Button>
+                    <Button onClick={nextStep} isInActiveState={isInActiveState} width={customBtnWidth} text="Next" icon={<FaLongArrowAltRight style={iconStyle} />}></Button>
               </div>
             </Card>
         </>

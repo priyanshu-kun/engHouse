@@ -4,4 +4,20 @@
     justify-content: space-between;
     align-items: center;
     font-family: "SF-Pro-Display-Black.otf";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #121212;
+}
+
+
+.navRight {
+    background-color: red;
+    /* width: 230px; */
+    /* max-width: 50%; */
+    min-width: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }

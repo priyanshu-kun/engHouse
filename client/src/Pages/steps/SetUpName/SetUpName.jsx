@@ -12,6 +12,7 @@ function SetUpName({ onNext }) {
     const {name} = useSelector((state) => state.activate)
     const dispatch = useDispatch()
     const [fullName,setfullName] = useState(name)
+    const [isInActiveState, setIsInActiveState] = useState(true);
 
 
     const iconStyle = {
@@ -36,13 +37,19 @@ function SetUpName({ onNext }) {
         <>
             <Card title="What's your full name?&nbsp;" emoji="😎">
                 <TextInput value={fullName} onChange={(e) => {
+                    if(e.target.value) {
+                        setIsInActiveState(false);
+                    }
+                    else {
+                        setIsInActiveState(true);
+                    }
                     setfullName(e.target.value)
                 }} />
 
                 <p className={styles.paragraph}>People use real names at codershouse :)</p>
 
                 <div>
-                    <Button onClick={nextStep} width={customBtnWidth} text="Next" icon={<FaLongArrowAltRight style={iconStyle} />}></Button>
+                    <Button onClick={nextStep} width={customBtnWidth} isInActiveState={isInActiveState} text="Next" icon={<FaLongArrowAltRight style={iconStyle} />}></Button>
                 </div>
             </Card>
         </>

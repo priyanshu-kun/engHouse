@@ -8,6 +8,7 @@ import {setAvatar} from "../../../store/activate.Slice"
 import {activate} from "../../../http/index"
 import { setAuth } from '../../../store/auth.Slice';
 import Loader from '../../../components/shared/Loader/Loader';
+import { useEffect } from 'react';
 
 
 function SetUpAvatar({onNext}) {
@@ -16,6 +17,8 @@ function SetUpAvatar({onNext}) {
    const [image,setImage] = useState("/images/avatar.png")
    const [isAvatarNotSet, setIsAvatarNotSet] = useState(true)
    const [loading, setLoading] = useState(false)
+   const [isInActiveState, setIsInActiveState] = useState(true);
+   const [mounted, setMounted] = useState(true);
    const dispatch = useDispatch()
    
     const iconStyle = {
@@ -34,7 +37,9 @@ function SetUpAvatar({onNext}) {
             }
             const {data} = await activate({name,avatar,username})
             if(data.auth) {
-                dispatch(setAuth(data));
+                if(mounted) {
+                    dispatch(setAuth(data));
+                }
             }
        } 
        catch(e) {
@@ -52,9 +57,19 @@ function SetUpAvatar({onNext}) {
         reader.onloadend = function() {
             setImage(reader.result)
             setIsAvatarNotSet(false);
+            setIsInActiveState(false);
             dispatch(setAvatar(reader.result))
         }
     }
+
+
+    useEffect(() => {
+        return () => {
+            setMounted(false);
+        }
+    }, [])
+
+
 
     if(loading) return <Loader message="Activation in progress ..." />
 
@@ -71,7 +86,7 @@ function SetUpAvatar({onNext}) {
                </div>
 
                 <div>
-                    <Button onClick={submit} width={customBtnWidth} text="Next" icon={<FaLongArrowAltRight style={iconStyle} />}></Button>
+                    <Button onClick={submit} width={customBtnWidth} isInActiveState={isInActiveState} text="Next" icon={<FaLongArrowAltRight style={iconStyle} />}></Button>
                 </div>
             </Card>
         </>

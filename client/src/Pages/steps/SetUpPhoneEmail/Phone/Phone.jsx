@@ -11,6 +11,7 @@ import {setOTP} from "../../../../store/auth.Slice"
 function Phone({onNext}) {
 
     const [phoneNumber,setPhoneNumber] = useState("")
+    const [isInActiveState, setIsInActiveState] = useState(true);
     const dispatch = useDispatch()
 
     const iconStyle = {
@@ -34,9 +35,17 @@ function Phone({onNext}) {
     return (
         <>
             <Card title="Enter a phone number" emoji="☎️">
-                <TextInput value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                <TextInput value={phoneNumber} onChange={(e) => {
+                    if(e.target.value) {
+                        setIsInActiveState(false);
+                    }
+                    else {
+                        setIsInActiveState(true);
+                    }
+                    setPhoneNumber(e.target.value)
+                }} />
                 <div>
-                    <Button width={customBtnWidth} onClick={submit} text="Next" icon={<FaLongArrowAltRight style={iconStyle} />}></Button>
+                    <Button width={customBtnWidth} isInActiveState={isInActiveState} onClick={submit} text="Next" icon={<FaLongArrowAltRight style={iconStyle} />}></Button>
                 </div>
                 <p className={style.bottomParagraph}>By entering your number, you’re agreeing to our Terms of Service and Privacy Policy. Thanks!</p>
             </Card>
