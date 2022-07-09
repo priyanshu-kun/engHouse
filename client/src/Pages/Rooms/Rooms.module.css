@@ -1,0 +1,94 @@
+.customContainerStyles {
+    height: calc(100vh - 80px);
+    margin-top: 70px;
+    padding-bottom: 60px;
+}
+
+
+.roomsHeader {
+    display: flex;
+    width: calc(100% - 20px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10px 40px 10px;
+}
+
+
+.startRoomButton {
+    display: flex;
+    align-items: center;
+    background-color: #20bd5f;
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'SF-Pro-Display-Bold.otf';
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.startRoomButton:hover {
+    background-color: #177e40;
+}
+
+
+.startRoomButton:active,.startRoomButton:focus {
+    box-shadow: 0 0 0 2px rgb(255, 255, 255);
+}
+
+.btnTxt {
+    margin-left: 3px;
+    margin-top: -3px;
+}
+
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+
+.heading {
+    font-size: 20px;
+    position: relative;
+}
+
+.searchBox {
+    background-color: #262626;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    min-width: 300px;
+    border-radius: 20px;
+}
+
+.searchBar {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 10px;
+    color: #fff;
+    width: 100%;
+}
+
+
+.heading::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60%;
+    height: 4px;
+    background-color: #0077ff;
+    border-radius: 10px;
+}
+
+
+.roomList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { logout } from '../../../http';
 import {useDispatch, useSelector} from "react-redux"
 import {setAuth} from "../../../store/auth.Slice"
+import { FaLongArrowAltRight } from "react-icons/fa";
 import { setAvatar, setName, setUsername } from '../../../store/activate.Slice';
 
 function Navbar() {
@@ -37,22 +38,31 @@ function Navbar() {
     const logoText = {
         marginLeft: "3px"
     }
+    const iconStyle = {
+        fontSize: "16px",
+    }
+
+
     return (
         <nav className={`container ${styles.navbar}`}>
             <Link style={brandStyle} to="/">
                 <span>👋</span><span style={logoText}>Eng.House</span>
             </Link>
-            <div className={styles.navRight}>
-                <h3>{user.name}</h3>
-                <Link to="/">
-                    <img src={user.avatar} width="40" height="40" alt="avatar" />
-                </Link>
             {
-                isAuth && (
-                    <button onClick={logOutUser}>LogOut</button>
+                isAuth && user.activated && (
+                    <div className={styles.navRight}>
+                        <h3 className={styles.name}>{user?.name}</h3>
+                        <Link className={styles.avatarLink} to="/">
+                            <img className={styles.avatar} src={user?.avatar} width="40" height="40" alt="avatar" />
+                        </Link>
+                    {
+                        isAuth && (
+                            <button className={styles.logout} onClick={logOutUser}><FaLongArrowAltRight style={iconStyle}/></button>
+                        )
+                    }
+                    </div>
                 )
             }
-            </div>
         </nav>
     );
 }
