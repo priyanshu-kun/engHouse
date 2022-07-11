@@ -1,0 +1,140 @@
+.modalMask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(237, 237, 237);
+}
+
+
+.modalBody {
+    width: 50%;
+    max-width: 500px;
+    min-width: 500px;
+    background-color: #1d1d1d;
+    border-radius: 20px;
+    position: relative;
+    transform: scale(0.8);
+}
+
+
+.modalHeader {
+    padding: 40px 30px 30px 30px;
+    border-bottom: 2px solid #262626;
+}
+
+
+.modalHeader input {
+    font-size: 1.2rem;
+}
+
+
+.roomTypes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.typeBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 8px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.typeBoxActive {
+    background-color: #262626;
+}
+
+
+.typeBox img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+}
+
+.typeBox span {
+    opacity: 0.6;
+    font-size: 0.8rem;
+}
+
+.heading {
+    margin-bottom: 10px;
+    margin-left: 5px;
+    font-size: 1.2rem;
+}
+
+
+.subHeading {
+    margin-bottom: 12px;
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
+
+.modalFooter {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.modalFooter h2 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.modalFooter img {
+    width: 20px;
+    height: 20px;
+}
+
+.footerBtn {
+    background-color: #20bd5f;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 46px;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footerBtn:hover {
+    background-color: #177e40; 
+}
+
+
+.footerBtn img {
+    margin-right: 6px;
+}
+
+
+.closeButton {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 16px;
+    right: 14px;
+    cursor: pointer;
+}
+
+.closeButton img {
+    width: 18px;
+    height: 18px;
+}

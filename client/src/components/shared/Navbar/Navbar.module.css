@@ -1,6 +1,8 @@
 .navbar {
     display: flex;
     height: 60px;
+    width: calc(1200px + 80px);
+    max-width: calc(90% + 80px);
     justify-content: space-between;
     align-items: center;
     font-family: "SF-Pro-Display-Black.otf";
@@ -8,7 +10,11 @@
     top: 0;
     left: 0;
     right: 0;
+    z-index: 99999;
+    padding: 0 40px;
+    border-radius: 0 0 20px 20px;
     background-color: #121212;
+    color: rgb(237, 237, 237);
 }
 
 

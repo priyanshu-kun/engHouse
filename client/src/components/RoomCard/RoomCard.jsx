@@ -11,14 +11,14 @@ function RoomCard({room}) {
             <div className={styles.avatar}>
                 {
                     room.speakers.map(speaker => (
-                        <img src={speaker.avatar} alt="speaker-avatar" />
+                        <img key={speaker.id} src={speaker.avatar} alt="speaker-avatar" />
                     ))
                 } 
             </div>
             <div className={styles.names}>
                 {
                     room.speakers.map(speaker => (
-                        <div className={styles.namesWrapper}>
+                        <div key={speaker.id} className={styles.namesWrapper}>
                             <span>{speaker.name}</span>
                             <img src='/images/chat-bubble.png' alt="chat bubble" />
                         </div>

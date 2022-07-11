@@ -16,6 +16,7 @@ export const sendOtp = (data) => api.post("http://localhost:5500/api/send-otp",d
 export const verifyOtp = (data) => api.post("http://localhost:5500/api/verify-otp",data)
 export const activate = (data) => api.post("http://localhost:5500/api/activate",data)
 export const logout = () => api.post('http://localhost:5500/api/logout')
+export const createRoom = (data) => api.post('http://localhost:5500/api/rooms',data)
 
 
 // Interceptors

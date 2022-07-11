@@ -3,10 +3,13 @@ import styles from "./Rooms.module.css"
 import { FiSearch } from "react-icons/fi";
 import { FaMicrophoneAlt } from "react-icons/fa";
 import RoomCard from '../../components/RoomCard/RoomCard';
+import AddRoomModal from '../../components/AddRoomModal/AddRoomModal';
+import { useState } from 'react';
 
 
 
 const rooms = [
+
     {
         id: 1,
         topic: 'Which framework best for frontend ?',
@@ -143,78 +146,23 @@ const rooms = [
         ],
         totalPeople: 40,
     },
-  {
-        id: 5,
-        topic: 'Artificial inteligence is the future?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
-  {
-        id: 5,
-        topic: 'Artificial inteligence is the future?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
-  {
-        id: 5,
-        topic: 'Artificial inteligence is the future?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
-  {
-        id: 5,
-        topic: 'Artificial inteligence is the future?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
+ 
 ];
 
 
 function Rooms() {
+
+    const [showModal,setShowModal] = useState(false)
+
+    function onModalOpen() {
+        setShowModal(true);
+    }
+
+
+    function onModalClose() {
+        setShowModal(false);
+    }
+
     return (
         <>
             <div  className={`container ${styles.customContainerStyles}`}>
@@ -227,7 +175,7 @@ function Rooms() {
                         </div>
                     </div>
                     <div className={styles.right}>
-                        <button className={styles.startRoomButton}>
+                        <button onClick={onModalOpen} className={styles.startRoomButton}>
                             <FaMicrophoneAlt style={{color: "#fff", fontSize: "18px"}} />
                             <span className={styles.btnTxt}>Create a room</span>
                         </button>
@@ -240,6 +188,11 @@ function Rooms() {
 
                 </div>
             </div>
+            {
+                showModal && (
+                    <AddRoomModal onModalClose={onModalClose} />
+                )
+            }
         </>
     );
 }
