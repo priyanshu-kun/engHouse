@@ -43,6 +43,7 @@ function Navbar() {
     }
 
 
+
     return (
         <nav className={`container ${styles.navbar}`}>
             <Link style={brandStyle} to="/">
