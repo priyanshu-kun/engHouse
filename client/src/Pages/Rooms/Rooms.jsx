@@ -5,158 +5,175 @@ import { FaMicrophoneAlt } from "react-icons/fa";
 import RoomCard from '../../components/RoomCard/RoomCard';
 import AddRoomModal from '../../components/AddRoomModal/AddRoomModal';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { getAllRooms } from '../../http';
 
 
 
-const rooms = [
+// const rooms = [
 
-    {
-        id: 1,
-        topic: 'Which framework best for frontend ?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
-    {
-        id: 3,
-        topic: 'What’s new in machine learning?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
-    {
-        id: 4,
-        topic: 'Why people use stack overflow?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
-    {
-        id: 5,
-        topic: 'Artificial inteligence is the future?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
-  {
-        id: 5,
-        topic: 'Artificial inteligence is the future?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
-  {
-        id: 5,
-        topic: 'Artificial inteligence is the future?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
-  {
-        id: 5,
-        topic: 'Artificial inteligence is the future?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
-  {
-        id: 5,
-        topic: 'Artificial inteligence is the future?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-            {
-                id: 2,
-                name: 'Jane Doe',
-                avatar: '/images/nezuko.jpg',
-            },
-        ],
-        totalPeople: 40,
-    },
+//     {
+//         id: 1,
+//         topic: 'Which framework best for frontend ?',
+//         speakers: [
+//             {
+//                 id: 1,
+//                 name: 'John Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//             {
+//                 id: 2,
+//                 name: 'Jane Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//         ],
+//         totalPeople: 40,
+//     },
+//     {
+//         id: 3,
+//         topic: 'What’s new in machine learning?',
+//         speakers: [
+//             {
+//                 id: 1,
+//                 name: 'John Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//             {
+//                 id: 2,
+//                 name: 'Jane Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//         ],
+//         totalPeople: 40,
+//     },
+//     {
+//         id: 4,
+//         topic: 'Why people use stack overflow?',
+//         speakers: [
+//             {
+//                 id: 1,
+//                 name: 'John Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//             {
+//                 id: 2,
+//                 name: 'Jane Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//         ],
+//         totalPeople: 40,
+//     },
+//     {
+//         id: 5,
+//         topic: 'Artificial inteligence is the future?',
+//         speakers: [
+//             {
+//                 id: 1,
+//                 name: 'John Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//             {
+//                 id: 2,
+//                 name: 'Jane Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//         ],
+//         totalPeople: 40,
+//     },
+//   {
+//         id: 5,
+//         topic: 'Artificial inteligence is the future?',
+//         speakers: [
+//             {
+//                 id: 1,
+//                 name: 'John Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//             {
+//                 id: 2,
+//                 name: 'Jane Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//         ],
+//         totalPeople: 40,
+//     },
+//   {
+//         id: 5,
+//         topic: 'Artificial inteligence is the future?',
+//         speakers: [
+//             {
+//                 id: 1,
+//                 name: 'John Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//             {
+//                 id: 2,
+//                 name: 'Jane Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//         ],
+//         totalPeople: 40,
+//     },
+//   {
+//         id: 5,
+//         topic: 'Artificial inteligence is the future?',
+//         speakers: [
+//             {
+//                 id: 1,
+//                 name: 'John Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//             {
+//                 id: 2,
+//                 name: 'Jane Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//         ],
+//         totalPeople: 40,
+//     },
+//   {
+//         id: 5,
+//         topic: 'Artificial inteligence is the future?',
+//         speakers: [
+//             {
+//                 id: 1,
+//                 name: 'John Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//             {
+//                 id: 2,
+//                 name: 'Jane Doe',
+//                 avatar: '/images/nezuko.jpg',
+//             },
+//         ],
+//         totalPeople: 40,
+//     },
  
-];
+// ];
 
 
 function Rooms() {
 
     const [showModal,setShowModal] = useState(false)
+    const [rooms, setRooms] = useState([]);
 
     function onModalOpen() {
         setShowModal(true);
     }
+
+
+    useEffect(() => {
+        try {
+            const fetchRooms = async () => {
+                const {data} = await getAllRooms();
+                setRooms(data)
+            }
+            fetchRooms();
+        }
+        catch(e) {
+            console.error(e)
+        }
+    },[])
 
 
     function onModalClose() {

@@ -3,12 +3,14 @@ import styles from "./AddRoomModal.module.css"
 import TextInput from "../shared/TextInput/TextInput"
 import { useState } from 'react'
 import {createRoom as create} from "../../http/index"
+import {useHistory} from "react-router-dom"
 
 function AddRoomModal({onModalClose}) {
 
 
   const [roomType, setRoomType] = useState('open')
   const [topic, setTopic] = useState('')
+  const history = useHistory()
 
 
   function setActiveRoomType(type) {
@@ -21,7 +23,9 @@ function AddRoomModal({onModalClose}) {
       if(!topic) {
         return;
       }
-      const {data} = create({topic, roomType});
+      const {data} = await create({topic, roomType});
+      console.log("from AddRoom 27: ",data)
+      history.push('/room/'+data.id)
       console.log(data)
     } 
     catch(e) {
@@ -38,7 +42,7 @@ function AddRoomModal({onModalClose}) {
           </button>
            <div className={styles.modalHeader}>
               <h3 className={styles.heading}>Enter the topic to be disscussed.</h3>
-              <TextInput  fullWidth="true" value={topic} onChange={(e) => {
+              <TextInput  fullwidth="true" value={topic} onChange={(e) => {
                 setTopic(e.target.value)
               }} />
               <h2 className={styles.subHeading}>Room types</h2>

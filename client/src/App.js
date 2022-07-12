@@ -8,6 +8,7 @@ import Rooms from './Pages/Rooms/Rooms';
 import {useSelector} from "react-redux"
 import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
 import Loader from './components/shared/Loader/Loader';
+import Room from './Pages/Room/Room';
 
 
 // TODO 1: Generate random username
@@ -40,6 +41,9 @@ function App() {
         </SemiProtectedRoutes>
         <ProtectedRoutes path="/rooms" exact>
           <Rooms />
+        </ProtectedRoutes>
+        <ProtectedRoutes path="/room/:id" exact>
+          <Room />
         </ProtectedRoutes>
       </>
     </Switch>
