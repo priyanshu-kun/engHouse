@@ -7,7 +7,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - /Users/priyanshu/Documents/databases/mongodb/engHouse-data:/data/db
+      - ./mongodb/db:/data/db
   backend:
     build:
       dockerfile: Dockerfile.dev
